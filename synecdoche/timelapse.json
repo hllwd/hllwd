@@ -1,0 +1,112 @@
+[
+	{
+		"movie": "00:04",
+		"life": "2005-09-22T07:44:00",
+		"label": "début de l'automne, 07:44"
+	},
+	{
+		"movie": "03:05",
+		"life": "2005-10-14",
+		"label": "petit déjeuner"
+	},
+	{
+		"movie": "03:40",
+		"life": "2005-10-17",
+		"label": "petit déjeuner"
+	},
+	{
+		"movie": "04:02",
+		"life": "2005-10-22",
+		"label": "petit déjeuner : le lait est expiré"
+	},
+	{
+		"movie": "04:27",
+		"life": "2005-11-02",
+		"label": "petit déjeuner : Vivian Malon Jones est morte"
+	},
+	{
+		"movie": "08:04",
+		"life": "2006-03",
+		"label": "rendez-vous chez l'ophtalmologiste"
+	},
+	{
+		"movie": "23:45",
+		"life": "2006-05",
+		"label": "petit déjeuner après le théâtre"
+	},
+	{
+		"movie": "29:35",
+		"life": "2006-09",
+		"label": "rendez-vous chez le chirurgien dentaire"
+	},
+	{
+		"movie": "30:32",
+		"life": "2006-12",
+		"label": "dans un magazine, on apprend qu'Adele est partie depuis six mois"
+	},
+	{
+		"movie": "32:42",
+		"life": "2007-03",
+		"label": "un an qu'Adele est partie"
+	},
+	{
+		"movie": "36:40",
+		"life": "2009-03",
+		"label": "Caden reçoit le prix MacArthur"
+	},
+	{
+		"movie": "46:48",
+		"life": "",
+		"label": "Caden se remarie avec Claire"
+	},
+	{
+		"movie": "47:32",
+		"life": "2006-09",
+		"label": "Caden a une 2ème fille, Ariel"
+	},
+	{
+		"movie": "47:43",
+		"life": "2011",
+		"label": "sa fille Olive a 10 ans et se fait tatouer le corps"
+	},
+	{
+		"movie": "01:02:43",
+		"life": "2026",
+		"label": "Caden travaille sur sa pièce depuis 17 ans"
+	},
+	{
+		"movie": "01:13:50",
+		"life": "2030",
+		"label": "Claire a 45 ans"
+	},
+	{
+		"movie": "01:21:00",
+		"life": "2038",
+		"label": "Mort d'Olive"
+	},
+	{
+		"movie": "01:29:00",
+		"life": "2040",
+		"label": "Mort de la mère de Caden"
+	},
+	{
+		"movie": "01:39:00",
+		"life": "2044",
+		"label": "Mort de Sammy"
+	},
+	{
+		"movie": "01:44:00",
+		"life": "2040",
+		"label": "Mort d'Hazel"
+	},
+	{
+		"movie": "01:53:00",
+		"life": "2040",
+		"label": "Mort d'Adele"
+	},
+	{
+		"movie": "02:00:00",
+		"life": "2060",
+		"label": "Mort de Caden"
+	}
+]
