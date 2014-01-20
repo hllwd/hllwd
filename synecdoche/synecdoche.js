@@ -28,7 +28,12 @@
   };
 
   var draw = function draw(data){
-    console.log(data);
+
+		// http://bl.ocks.org/Zikes/raw/4279121/
+		// https://gist.github.com/Zikes/4279121
+		var regDiegese = numbers.statistic.exponentialRegression( data.map(function(d){
+			return d.dateDiegese;
+		}) );
 
     var margeX = 200
       , margeYTop = 200
@@ -76,7 +81,7 @@
       })
       .interpolate("basis");
 
-    var curve = gCurve.selectAll('.curve').data([data])
+    var curve = gCurve.selectAll('.curve').data([data]);
     curve.enter().append('svg:path')
       .attr('class', 'curve')
       .attr('d',curvePath);
