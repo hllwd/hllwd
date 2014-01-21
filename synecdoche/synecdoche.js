@@ -29,42 +29,29 @@
 
     var draw = function draw(data) {
 
-        // http://bl.ocks.org/Zikes/raw/4279121/
-        // https://gist.github.com/Zikes/4279121
-        /*var regDiegese = numbers.statistic.exponentialRegression( data.map(function(d){
-         return d.dateDiegese;
-         }) );*/
-
-        var tabRegression = data.map(function (d) {
-            return [d.dateFilm, d.dateDiegese];
-        });
-        var myRegression = regression('polynomial', tabRegression, 3);
-
-        var getYRef = function(x){
-            var y = 0;
-            myRegression.equation.forEach(function(el, i){
-                y += el * Math.pow(x,i);
-            });
-            return y;
-        };
-
         var margeX = 200
             , margeYTop = 200
             , margeYBottom = 200;
 
-        // scales
-        // diegese on the y axis
+        // scales functions
         var diegeseScale = d3.scale.linear()
                 .domain(d3.extent(data, function (d) {
                     return d.dateDiegese;
                 }))
                 .rangeRound([height - margeYBottom, margeYTop])
-        // filmScale, on the x axis
             , filmScale = d3.scale.linear()
                 .domain(d3.extent(data, function (d) {
                     return d.dateFilm;
                 }))
                 .rangeRound([margeX, width - margeX]);
+
+        // data set for regression curve
+        var tabRegression = data.map(function (d) {
+            return [filmScale(d.dateFilm), diegeseScale(d.dateDiegese)];
+        });
+
+        // we want a 3-polynomial regression
+        var myRegression = regression('polynomial', tabRegression, 3);
 
         // axis
         var axisDiegese = gAxis.selectAll('.axisDiegese').data([1]);
@@ -83,8 +70,7 @@
             .attr('y1', height - margeYBottom)
             .attr('y2', height - margeYBottom);
 
-        // curve
-
+        // curve calc
         var curvePath = d3.svg.line()
             .y(function (d) {
                 return diegeseScale(d.dateDiegese);
@@ -92,25 +78,30 @@
             .x(function (d) {
                 return filmScale(d.dateFilm);
             })
-            .interpolate("basis");
+            .interpolate("cardinal");
 
+        // curve draw
         var curve = gCurve.selectAll('.curve').data([data]);
         curve.enter().append('svg:path')
             .attr('class', 'curve')
             .attr('d', curvePath);
 
+        // regression curve calc
         var curveRegPath = d3.svg.line()
             .y(function (d) {
-                return diegeseScale( getYRef(d.dateFilm) );
+                return d[1];
             })
             .x(function (d) {
-                return filmScale(d.dateFilm);
-            });
+                return d[0];
+            })
+            .interpolate("basis");
 
-        var curveReg = gCurve.selectAll('.curveReg').data([data]);
+        // regression curve draw
+        var curveReg = gCurve.selectAll('.curveReg').data([myRegression.points]);
         curveReg.enter().append('svg:path')
             .attr('class', 'curveReg')
-            .attr('d', curveRegPath);
+            .attr('d', curveRegPath)
+            .attr('stroke-dasharray', '5,5');
 
         var dots = gCurve.selectAll('.dots').data(data);
         dots.enter().append('svg:circle')
@@ -121,7 +112,7 @@
             .attr('cy', function (d) {
                 return diegeseScale(d.dateDiegese);
             })
-            .attr('r', 5);
+            .attr('r', 4);
 
         var labelsFilm = gLabel.selectAll('.labelsMovie').data(data);
         labelsFilm.enter().append('svg:text')
