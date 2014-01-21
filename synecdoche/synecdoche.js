@@ -133,7 +133,7 @@
             .text(function (d) {
                 return d.label + ' - ' + d.movie;
             })
-            .attr('transform', function (d, i) {
+            .attr('transform', function (d) {
                 return "rotate(-45," + [filmScale(d.dateFilm), height - margeYBottom + 20] + ")"
             })
             .style('opacity', function (d, i) {
@@ -148,9 +148,7 @@
             , dateFormat = d3.time.format('%Y');
         labelsDiegese.enter().append('svg:text')
             .attr('class', 'labelsDiegese label')
-            .attr('x', function (d) {
-                return margeX - 20;
-            })
+            .attr('x', margeX - 20)
             .attr('y', function (d) {
                 return diegeseScale(d.dateDiegese);
             })
