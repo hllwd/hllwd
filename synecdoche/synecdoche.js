@@ -38,7 +38,7 @@
         var tabRegression = data.map(function (d) {
             return [d.dateFilm, d.dateDiegese];
         });
-        var myRegression = regression('polynomial', tabRegression, 4);
+        var myRegression = regression('polynomial', tabRegression, 3);
 
         var getYRef = function(x){
             var y = 0;
@@ -101,14 +101,13 @@
 
         var curveRegPath = d3.svg.line()
             .y(function (d) {
-                return diegeseScale( d[1] );
+                return diegeseScale( getYRef(d.dateFilm) );
             })
             .x(function (d) {
-                return filmScale(d[0]);
-            })
-            .interpolate("basis");
+                return filmScale(d.dateFilm);
+            });
 
-        var curveReg = gCurve.selectAll('.curveReg').data([myRegression.points]);
+        var curveReg = gCurve.selectAll('.curveReg').data([data]);
         curveReg.enter().append('svg:path')
             .attr('class', 'curveReg')
             .attr('d', curveRegPath);
