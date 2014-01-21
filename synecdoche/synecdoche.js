@@ -70,22 +70,6 @@
             .attr('y1', height - margeYBottom)
             .attr('y2', height - margeYBottom);
 
-        // curve calc
-        var curvePath = d3.svg.line()
-            .y(function (d) {
-                return diegeseScale(d.dateDiegese);
-            })
-            .x(function (d) {
-                return filmScale(d.dateFilm);
-            })
-            .interpolate("cardinal");
-
-        // curve draw
-        var curve = gCurve.selectAll('.curve').data([data]);
-        curve.enter().append('svg:path')
-            .attr('class', 'curve')
-            .attr('d', curvePath);
-
         // regression curve calc
         var curveRegPath = d3.svg.line()
             .y(function (d) {
@@ -102,6 +86,22 @@
             .attr('class', 'curveReg')
             .attr('d', curveRegPath)
             .attr('stroke-dasharray', '5,5');
+
+        // curve calc
+        var curvePath = d3.svg.line()
+            .y(function (d) {
+                return diegeseScale(d.dateDiegese);
+            })
+            .x(function (d) {
+                return filmScale(d.dateFilm);
+            })
+            .interpolate("cardinal");
+
+        // curve draw
+        var curve = gCurve.selectAll('.curve').data([data]);
+        curve.enter().append('svg:path')
+            .attr('class', 'curve')
+            .attr('d', curvePath);
 
         var dots = gCurve.selectAll('.dots').data(data);
         dots.enter().append('svg:circle')
